@@ -28,5 +28,5 @@ Rails.application.routes.draw do
     collection { get :search }
   end
  
-  root to: "lists#index"
+  root to: "contactss#index"
 end
