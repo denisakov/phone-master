@@ -1,1 +1,6 @@
 <p id="notice"><%= flash.now[:notice] %></p>
+<% unless @lists.empty? %>
+
+<% else %>
+  <h3>There are no records in the database yet.</h3>
+<% end %>
