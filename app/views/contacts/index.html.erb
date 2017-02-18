@@ -1,0 +1,56 @@
+<%= flash.now[:notice] %>
+<br />
+<div>
+  <h3>Upload CSV to AWS</h3>
+  <%= form_tag({action:  :load_to_s3}, multipart: true) do %>
+    <%= file_field_tag :file  %>
+    <%= submit_tag 'Upload file' %>
+  <% end %>
+</div>
+<!--<div id="progress">-->
+<!--    <div class="bar" style="width: 0%;"></div>-->
+<!--</div>-->
+<!--<div>-->
+<!--  <input id="fileupload" type="file" name="files[]"  multiple>-->
+  <!--<%= submit_tag 'Upload' %>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <h3>Upload CSV to Drive</h3>-->
+<!--    <%= form_tag({action:  :load_to_drive}, multipart: true) do %>-->
+<!--        <%= file_field_tag :file %>-->
+<!--        <%= submit_tag "Upload" %>-->
+<!--    <% end %>-->
+<!--</div>-->
+<br />
+<div>
+  <% unless @files.empty? %>
+    <h3>Files ready for processing</h3>
+    <% @files.each_with_index do |file, index| %>
+        <%= form_tag process_file_contacts_path, multipart: true do %>
+          <ul>
+            <%= hidden_field_tag :file, file %>
+            <% if @busy == false %>
+              <%= submit_tag "Process" %>
+            <% end %>
+            <%= index+1 %>. <%= file %>
+          </ul>
+        <% end %>
+      
+    <% end %>
+  <% else %>
+    <h3>There are no files to process</h3>
+  <% end %>
+</div>
+<br />
+<br />
+<% if @busy != false %>
+  <div>
+     
+    <h3>Processing</h3>
+    <% @busy.each do |file|%>
+      <ul>
+        <%= file %>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
