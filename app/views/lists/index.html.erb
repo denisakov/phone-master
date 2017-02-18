@@ -1,5 +1,5 @@
 <p id="notice"><%= flash.now[:notice] %></p>
-<% unless @lists.empty?%>
+<% unless @lists.empty? %>
   <table class="list-table">
     <thead>
       <tr>
@@ -20,11 +20,7 @@
             </td>
             <td>
               "<%= list.title %>" &nbsp; (
-                <% if @listRef.nil? || list.id != @listRef.id %>
                   <%= list.contacts.count %>
-                <% else %>
-                  <%= list.contacts.count %>
-                <% end %>
               )&nbsp;
               <%= hidden_field_tag :listId, list.id %>
               <%= text_field_tag :sampleSize %>
@@ -32,7 +28,7 @@
             <!--<td><%= link_to 'Show', list %></td>-->
             <!--<td><%= link_to 'Edit', edit_list_path(list) %></td>-->
             
-            <!--<td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+            <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <td><%= submit_tag 'Create list'%></td>
           </tr>
         <% end %>
@@ -40,5 +36,5 @@
     </tbody>
   </table>
 <% else %>
-  <h3>There are no records in the database yet</h3>
+  <h3>There are no records in the database yet.</h3>
 <% end %>

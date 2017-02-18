@@ -3,18 +3,18 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
-    puts checkProcessing()
-    if checkProcessing()
+    # puts checkProcessing()
+    # if checkProcessing()
       @listRef = List.all.select("lists.*").joins(:contacts).order('contacts.created_at DESC').first
       #@totalCount = UltimateJob.new.count(checkProcessing())
       #puts checkProcessing(), @listRef, @totalCount
-    else
-      @listId = nil
-    end
+    # else
+      # @listId = nil
+    # end
   end
   
   def checkProcessing()
-    processingFileList = Dir.glob("#{Rails.root}/public/uploads/processing/*.csv")
+    processingFileList = Dir.glob("#{Rails.root}/tmp/*.csv")
     if processingFileList.empty?
       return false
     else
