@@ -1,28 +1,28 @@
 Rails.application.routes.draw do
-  get 'uploads/new'
+  # get 'uploads/new'
 
-  get 'uploads/create'
+  # get 'uploads/create'
 
-  get 'uploads/index'
+  # get 'uploads/index'
 
-  resources :uploads
-  resources :lists
+  # resources :uploads
+  
   get 'lists/index'
   get 'contacts/index'
   get 'contacts/download'
   get 'contacts/create_list'
   get 'contacts/search'
   get 'contacts/process_file'
-  
+  resources :lists
   resources :contacts do
     collection { post :process_file }
   end
   resources :contacts do
     collection { post :save_list }
   end
-  resources :contacts do
-    collection { post :load_to_drive }
-  end
+  # resources :contacts do
+  #   collection { post :load_to_drive }
+  # end
   resources :contacts do
     collection { post :load_to_s3 }
   end
@@ -34,5 +34,5 @@ Rails.application.routes.draw do
     collection { get :search }
   end
  
-  root to: "contacts#index"
+  root to: "lists#index"
 end
