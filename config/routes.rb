@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'uploads/index'
   # resources :uploads
   resources :lists
-  get 'lists/index'
+  post 'lists/index'
   
   get 'contacts/index'
   get 'contacts/download'
