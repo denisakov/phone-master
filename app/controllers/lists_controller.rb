@@ -5,7 +5,7 @@ class ListsController < ApplicationController
     @lists = List.all
     # puts checkProcessing()
     # if checkProcessing()
-      @listRef = List.all.select("lists.*").joins(:contacts).order('contacts.created_at DESC').first
+      # @listRef = List.all.select("lists.*").joins(:contacts).order('contacts.created_at DESC').first
       #@totalCount = UltimateJob.new.count(checkProcessing())
       #puts checkProcessing(), @listRef, @totalCount
     # else
