@@ -75,16 +75,16 @@ class ContactsController < ApplicationController
   end
   
   def save_list
-    begin
+    # begin
       list = List.where(title: params[:title]).first || List.create!(title: params[:title])
         column = params[:column].to_i
         headerRow = params[:headerRow]
         filePath = params[:filePath]
       UltimateJob.perform_async(column, headerRow, filePath, list.id)
       redirect_to root_url, notice: "File is being filtered of duplicates and will be available shortly."
-    rescue
-      redirect_to root_url, notice: "Something went wrong."
-    end
+    # rescue
+      # redirect_to root_url, notice: "Something went wrong."
+    # end
   end
   
   def load_to_s3
