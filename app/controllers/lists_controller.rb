@@ -13,14 +13,14 @@ class ListsController < ApplicationController
     # end
   end
   
-  def checkProcessing()
-    processingFileList = Dir.glob("#{Rails.root}/tmp/*.csv")
-    if processingFileList.empty?
-      return false
-    else
-      return processingFileList[0]
-    end
-  end
+  # def checkProcessing()
+  #   processingFileList = Dir.glob("#{Rails.root}/tmp/*.csv")
+  #   if processingFileList.empty?
+  #     return false
+  #   else
+  #     return processingFileList[0]
+  #   end
+  # end
   
   def show
   end
