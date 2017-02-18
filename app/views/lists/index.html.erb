@@ -1,5 +1,5 @@
 <p id="notice"><%= flash.now[:notice] %></p>
-
+<% unless @lists.empty?%>
   <table class="list-table">
     <thead>
       <tr>
@@ -39,7 +39,6 @@
       <% end %>
     </tbody>
   </table>
-
-<br>
-
-<!--<%= link_to 'New List', new_list_path %>-->
+<% else %>
+  <h3>There are no records in the database yet</h3>
+<% end %>
