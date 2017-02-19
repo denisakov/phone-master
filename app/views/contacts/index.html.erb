@@ -2,7 +2,7 @@
   <h3>Upload CSV to AWS</h3>
   <%= form_tag({action:  :load_to_s3}, multipart: true) do %>
     <%= file_field_tag :file  %>
-    <%= submit_tag 'Upload file' %>
+    <%= submit_tag 'Upload' %>
   <% end %>
 </div>
 <!--<div id="progress">-->

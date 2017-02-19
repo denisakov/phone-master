@@ -10,7 +10,9 @@
 <%= link_to "Import", contacts_path, :method => :get %> | <%= link_to "Export", lists_path, :method => :get %> | <%= link_to "Search", contacts_search_path, :method => :get %>
 <br />
 <% flash.each do |key, value| %>
+<div id="flashes">
     <div class="alert <%= key %>"><%= value %></div>
+</div>
 <% end %>
 <%= yield %>
 

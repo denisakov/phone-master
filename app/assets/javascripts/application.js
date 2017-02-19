@@ -21,6 +21,10 @@ $(function() {
     return false;
   });
 });
+$(function() {
+  $('#flashes').delay(3000).fadeOut(800);
+});
+
 // $(function() {
 //   $('#fileupload').fileupload({
 //         dataType: 'json',
