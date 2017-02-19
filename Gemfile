@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'aws-sdk', '~> 2'
 gem 'jquery-fileupload-rails'
-
+gem 'traceroute'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

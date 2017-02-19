@@ -12,7 +12,7 @@ class UltimateJob
             options = {:encoding => 'UTF-8', :skip_blanks => true}
             CSV.foreach(filePath, options).with_index do |row, i|
                 if headerRow === "Yes" && i === 0
-                    puts row
+                    # puts row
                     next
                 else
                     @extraStr = ''
@@ -56,7 +56,7 @@ class UltimateJob
                             newContact = Contact.new({phone: @phoneNo, extra: @extraStr, list_id: listId})
                             contactsNewCheck[newContact.phone] = ""
                             contactsNew << newContact
-                            if contactsNewCheck.count == 1000 || i == @len - 1
+                            if contactsNewCheck.count == 1000 || i == @len - 2
                                 #puts contactsNew
                                 Contact.import contactsNew
                                 contactsNew.clear
@@ -66,10 +66,13 @@ class UltimateJob
                         end
                     end # end if !contact.nil?
                 end #if
+                puts "End number is " + i.to_s
+                puts "total count is " + @len.to_s
             end # end data.foreach
+            
             File.delete(filePath)
             fileName = filePath.split("/").last
-            puts fileName
+            # puts fileName
             S3_BUCKET.object("processing/" + fileName).delete
             list = ::List.where(id: listId).first
             if list.contacts.count === 0

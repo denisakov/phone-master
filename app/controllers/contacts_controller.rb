@@ -142,5 +142,9 @@ class ContactsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  # def catch_404
+  #   raise ActionController::RoutingError.new(params[:path])
+  #   raise ActionView::MissingTemplate.new(params[:path])
+  # end
 end
