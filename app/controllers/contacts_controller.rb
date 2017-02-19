@@ -48,7 +48,7 @@ class ContactsController < ApplicationController
   end
   
   def process_file
-    #begin
+    begin
       @rowarray = []
       #oldFile = File.open("#{Rails.root}/public/uploads/" + params[:file], "r")
       s3 = Aws::S3::Client.new
@@ -69,22 +69,22 @@ class ContactsController < ApplicationController
       sourceFile.delete
       puts aws_response
       @filePath = "#{Rails.root}/tmp/" + params[:file]
-    #rescue
-      #redirect_to root_url, notice: "Invalid CSV file format."
-    #end
+    rescue
+      redirect_to root_url, error: "Invalid CSV file format."
+    end
   end
   
   def save_list
-    # begin
+    begin
       list = List.where(title: params[:title]).first || List.create!(title: params[:title])
         column = params[:column].to_i
         headerRow = params[:headerRow]
         filePath = params[:filePath]
       UltimateJob.perform_async(column, headerRow, filePath, list.id)
       redirect_to root_url, notice: "File is being filtered of duplicates and will be available shortly."
-    # rescue
-      # redirect_to root_url, notice: "Something went wrong."
-    # end
+    rescue
+      redirect_to root_url, error: "Something went wrong."
+    end
   end
   
   def load_to_s3

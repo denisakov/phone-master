@@ -1,6 +1,4 @@
-<%= flash.now[:notice] %>
-<br />
-<div>
+<div style="margin-top:50px">
   <h3>Upload CSV to AWS</h3>
   <%= form_tag({action:  :load_to_s3}, multipart: true) do %>
     <%= file_field_tag :file  %>
