@@ -56,7 +56,7 @@ class UltimateJob
                             newContact = Contact.new({phone: @phoneNo, extra: @extraStr, list_id: listId})
                             contactsNewCheck[newContact.phone] = ""
                             contactsNew << newContact
-                            if contactsNewCheck.count == 1000 || i == @len - 2
+                            if contactsNewCheck.count == 1000 || i == @len-2
                                 #puts contactsNew
                                 Contact.import contactsNew
                                 contactsNew.clear
@@ -67,7 +67,7 @@ class UltimateJob
                     end # end if !contact.nil?
                 end #if
                 puts "End number is " + i.to_s
-                puts "total count is " + @len.to_s
+                puts "total count is " + @len.to_s + ". While we used " + (@len-2).to_s
             end # end data.foreach
             
             File.delete(filePath)
