@@ -1,6 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :authentication_required!
-  
+  # before_action :authentication_required!
   require 'csv'
   def index
     # fileList = Dir.glob("#{Rails.root}/public/uploads/*.csv")
