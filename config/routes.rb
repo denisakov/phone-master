@@ -17,9 +17,8 @@ Rails.application.routes.draw do
       post 'create_list'
     end
   end
+  resources :sessions, only: [:create, :new, :destroy]
   
   root to: "contacts#index"
-  # match "*path", to: "contacts#catch_404", via: :all
-  resources :sessions, only: [:create, :new, :destroy]
 
 end
