@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post 'create_list'
     end
   end
+  get 'sessions/new'
   resources :sessions, only: [:create, :new, :destroy]
   
   root to: "contacts#index"
