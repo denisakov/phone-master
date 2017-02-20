@@ -7,7 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "Import", contacts_path, :method => :get %> | <%= link_to "Export", lists_path, :method => :get %> | <%= link_to "Search", contacts_search_path, :method => :get %>
+  <% if session[:current_user] %>
+  <div>
+    <div style='float:left'>
+      <%= link_to "Import", contacts_path, :method => :get %> | <%= link_to "Export", lists_path, :method => :get %> | <%= link_to "Search", contacts_search_path, :method => :get %>
+    </div>
+    <div style='float:right'>
+      <%= link_to 'Log out', session_path('logout'), method: :delete %>
+    </div>
+  </div>
+    
+  <% end %>
 <br />
 <% flash.each do |key, value| %>
 <div id="flashes">

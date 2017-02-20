@@ -21,6 +21,8 @@ $(function() {
     return false;
   });
 });
+
+// http://stackoverflow.com/questions/34225162/flash-messages-how-to-show-them-properly-rails-js
 $(function() {
   $('#flashes').delay(3000).fadeOut(800);
 });

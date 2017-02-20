@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   
   root to: "contacts#index"
   # match "*path", to: "contacts#catch_404", via: :all
-
+  resources :sessions, only: [:create, :new, :destroy]
 
 end
