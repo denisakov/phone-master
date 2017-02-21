@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  post 'sessions/new'
   resources :sessions, only: [:create, :new, :destroy]
 
   get 'lists/index'
