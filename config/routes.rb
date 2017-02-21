@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  post 'sessions/new'
-  resources :sessions, only: [:create, :new, :destroy]
+  get 'sessions/new'
+  resources :sessions
+  # , only: [:create, :new, :destroy]
 
   get 'lists/index'
   resources :lists
