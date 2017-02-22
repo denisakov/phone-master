@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   match '/login', to: 'sessions#new', via: :all
-  resources :sessions, only: [:create, :new, :destroy]
+  resources :sessions # , only: [:create, :new, :destroy]
   
   get 'lists/index'
   resources :lists
