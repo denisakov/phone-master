@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   ApplicationNotAuthenticated = Class.new(Exception)
 
   rescue_from ApplicationNotAuthenticated do
-    flash[:error] = "You are about to be authorised"
-    sleep 5
     respond_to do |format|
       # format.json { render json: { errors: [message: "401 Not Authorized"] }, status: 401 }
       format.html do
