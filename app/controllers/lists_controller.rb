@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:update, :destroy]
   before_action :authentication_required!
+  before_action :set_list, only: [:update, :destroy]
   
   def index
     @lists = List.all

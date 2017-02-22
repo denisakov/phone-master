@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  # raise "boom!"
   before_action :authentication_required!
   require 'csv'
   def index
