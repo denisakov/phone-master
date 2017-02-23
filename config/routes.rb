@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  match '/login', to: 'sessions#new', via: :all
-  resources :sessions # , only: [:create, :new, :destroy]
-  
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   get 'lists/index'
   resources :lists
 
