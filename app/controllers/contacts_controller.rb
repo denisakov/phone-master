@@ -1,8 +1,9 @@
 class ContactsController < ApplicationController
   # raise "boom!"
-  before_action :authentication_required!
+  # before_action :authentication_required!
   require 'csv'
   def index
+    authentication_required!
     # fileList = Dir.glob("#{Rails.root}/public/uploads/*.csv")
     # s3fileList = S3_BUCKET.objects['.csv']
     s3fileList = S3_BUCKET.objects.collect(&:key)
@@ -12,6 +13,7 @@ class ContactsController < ApplicationController
   end
   
   def search
+    authentication_required!
     @contacts = Contact.search(params[:search])
   end
   
@@ -38,6 +40,7 @@ class ContactsController < ApplicationController
   end
   
   def processFileList(fileList)
+    authentication_required!
     files = []
     fileList.each do |fileName|
       if fileName =~ /processing\//
@@ -49,6 +52,7 @@ class ContactsController < ApplicationController
   end
   
   def process_file
+    authentication_required!
     begin
       @rowarray = []
       #oldFile = File.open("#{Rails.root}/public/uploads/" + params[:file], "r")
@@ -76,6 +80,7 @@ class ContactsController < ApplicationController
   end
   
   def save_list
+    authentication_required!
     begin
       list = List.where(title: params[:title]).first || List.create!(title: params[:title])
         column = params[:column].to_i
@@ -89,6 +94,7 @@ class ContactsController < ApplicationController
   end
   
   def load_to_s3
+    authentication_required!
     # UploadJob.perform_async(params)
     # https://c9.io/jonatans/ruby-aws-s3-example
     #make an object in your bucket for the upload
@@ -109,11 +115,13 @@ class ContactsController < ApplicationController
 
   
   def load_to_drive
+    authentication_required!
     redirect_to root_url, notice: "File has been uploaded."
     UploadJob.perform_async(params)
   end
 
   def create_list
+    authentication_required!
     @contacts = Contact.where(list_id: params[:listId]).limit(params[:sampleSize])
     @list = List.where(id: params[:listId]).first.title
     @listId = params[:listId]
@@ -123,6 +131,7 @@ class ContactsController < ApplicationController
   end
   
   def download
+    authentication_required!
     begin
       @contacts = Contact.where(list_id: params[:listId]).limit(params[:sampleSize])
       #puts @contacts
@@ -137,6 +146,7 @@ class ContactsController < ApplicationController
   end # end dowload
   
   def destroy
+    authentication_required!
     @contact.destroy
     respond_to do |format|
       format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }

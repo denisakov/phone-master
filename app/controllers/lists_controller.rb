@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
-  before_action :authentication_required!
+  # before_action :authentication_required!
   before_action :set_list, only: [:update, :destroy]
   
   def index
+    authentication_required!
     @lists = List.all
     # puts checkProcessing()
     # if checkProcessing()
@@ -27,6 +28,7 @@ class ListsController < ApplicationController
   end
 
   def new
+    authentication_required!
     @list = List.new
   end
 
@@ -34,6 +36,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    authentication_required!
     @list = List.new(list_params)
 
     respond_to do |format|
@@ -48,6 +51,7 @@ class ListsController < ApplicationController
   end
 
   def update
+    authentication_required!
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
@@ -60,6 +64,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    authentication_required!
     @list.destroy
     #DeleteWorker.perform_async(@list.id)
     #DeleteListJob.perform_async(@list.id)
