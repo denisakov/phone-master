@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get    'login',   to: 'sessions#new'
+  post   'login',   to: 'sessions#create'
+  delete 'logout',  to: 'sessions#destroy', as: 'logout'
+  
   get 'lists/index'
   resources :lists
 
@@ -17,14 +21,8 @@ Rails.application.routes.draw do
     end
   end
   
-  
-  delete 'logout',  to: 'sessions#destroy', as: 'logout'
-  post   'login',   to: 'sessions#create'
-  get    'login',   to: 'sessions#new'
+  root to: "contacts#index"
   
   # resources :sessions, only: [:new, :create, :destroy], controller: 'sessions'
 
-  
-  root to: "contacts#index"
-  
 end
