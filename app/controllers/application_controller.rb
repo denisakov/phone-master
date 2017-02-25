@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       format.json { render json: { errors: [message: "401 Not Authorized"] }, status: 401 }
       format.html do
         flash[:error] = "You are not authorized to access this page, please log in"
-        redirect_to new_session_path
+        redirect_to '/login'
       end
       format.any { head 401 }
     end
