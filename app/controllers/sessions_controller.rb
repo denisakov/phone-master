@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
     #   https://github.com/equivalent/scrapbook2/blob/master/archive/blogs/2016-09-simple-ralis-authentication-for-one-user.md
-  def example
-    "O HAI"
-  end
   
   def new
     @site_user = SiteUser.new
