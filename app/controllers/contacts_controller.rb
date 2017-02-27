@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-  # raise "boom!"
   # before_action :authentication_required!
   require 'csv'
   def index
@@ -154,8 +153,10 @@ class ContactsController < ApplicationController
     end
   end
   
-  # def catch_404
-  #   raise ActionController::RoutingError.new(params[:path])
-  #   raise ActionView::MissingTemplate.new(params[:path])
+  # def deleteS3
+  #   file = S3_BUCKET.object(params[:file])
+  #   file.delete
   # end
+  
+  
 end

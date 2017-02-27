@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'lists/index'
   resources :lists
 
+  # get 'deleteS3file', to: 'contacts#deleteS3'
   get 'contacts/index'
   get 'contacts/download'
   get 'contacts/create_list'
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
       post 'load_to_s3'
       get 'search'
       post 'create_list'
+      # post 'deleteS3'
     end
   end
   
